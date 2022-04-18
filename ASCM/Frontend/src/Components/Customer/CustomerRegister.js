@@ -52,7 +52,7 @@ const CustomerRegister = () => {
         axios.post('http://localhost:5000/customerRegister', formData)
           .then(response => {
             console.log(response)
-            navigate('/customerProfile')
+            navigate('/customerLogin')
             navigate(0)
             // console.log(formData);
           })

@@ -135,10 +135,10 @@ const setDetails = async()=>{
   const submitForm = (e) => {
     e.preventDefault()
     setDetails();
-    axios.post('http://localhost:5000/farmerRegister', formData)
+    axios.post('http://localhost:5000/farmerRegister', formData, {withCredentials: true})
       .then(response => {
         console.log(response)
-        navigate('/farmerProfile')
+        navigate('/farmerLogin')
         navigate(0)
         // console.log(formData);
       })

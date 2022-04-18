@@ -53,7 +53,7 @@ const DistributorRegister = () => {
         axios.post('http://localhost:5000/distributorRegister', formData)
           .then(response => {
             console.log(response)
-            navigate('/distributorProfile')
+            navigate('/distributorLogin')
             navigate(0)
             // console.log(formData);
           })

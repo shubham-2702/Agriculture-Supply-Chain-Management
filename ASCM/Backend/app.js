@@ -1,8 +1,9 @@
-require('dotenv').config();
+// require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const session = require('express-session');
+const cookie = require('cookie-parser')
 // const passport = require("passport");
 // const passportLocalMongoose = require("passport-local-mongoose");
 const cors = require("cors");
@@ -18,12 +19,19 @@ const distributorRouter = require("./routes/distributor");
 
 const app = express();
 app.use(express.json())
-app.use(cors());
-
+app.use(cors({
+  origin: true,
+  credentials: true
+}));
+app.use(cookie())
 
 const DB_NAME = "agrichainDB";
 
-mongoose.connect("mongodb://localhost:27017/agrichainDB", {useNewUrlParser: true});
+mongoose.connect("mongodb://localhost:27017/agrichainDB", {
+  useUnifiedTopology: true, 
+  useNewUrlParser: true
+});
+
 // mongoose.set("useCreateIndex", true);
 const db = mongoose.connection; //access to the pending connection
 db.on("error", (err) => {

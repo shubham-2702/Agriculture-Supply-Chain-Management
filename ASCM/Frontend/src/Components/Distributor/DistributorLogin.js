@@ -28,7 +28,7 @@ const DistributorLogin = () => {
       
     const submitForm = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:5000/DistributorLogin', formData)
+        axios.post('http://localhost:5000/DistributorLogin', formData, {withCredentials: true})
           .then(response => {
             console.log(response)
             navigate('/distributorProfile')

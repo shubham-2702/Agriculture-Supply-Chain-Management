@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs')
 
 
 router.post('/', (req, res, next) => {
+  console.log(req.body)
   farmer.findOne({email: req.body.email})
     .then(doc => {
       if(doc){
@@ -13,10 +14,14 @@ router.post('/', (req, res, next) => {
           const token = jwt.sign({
             name: doc.name,
             email: doc.email,
-            contactNumber: doc.contactNumber
+            contactNumber: doc.contactNumber,
+            address: doc.address
           }, 'SECRET_KEY')
+          res.cookie('token', token, {
+            maxAge: 3600*1000
+          })
           // res.render('/farmerProfile');
-          res.status(200).json({token})
+          res.status(200).send()
         }else{
           res.status(400).json({err: "Wrong Credentials"})
         }
@@ -24,6 +29,7 @@ router.post('/', (req, res, next) => {
         res.status(400).json({err: "Wrong Credentials"})
       }
     }).catch(err => {
+      console.log(err)
       res.status(500).json({err})
     })
 })

@@ -27,7 +27,7 @@ const CustomerLogin = () => {
       
         const submitForm = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:5000/customerLogin', formData)
+        axios.post('http://localhost:5000/customerLogin', formData, {withCredentials: true})
           .then(response => {
             console.log(response)
             navigate('/customerProfile')
