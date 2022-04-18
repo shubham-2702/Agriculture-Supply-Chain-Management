@@ -16,6 +16,19 @@ import * as bst from "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route ,Routes} from "react-router-dom";
+import { useCookies } from "react-cookie";
+
+
+function check_cookie_name(name)  // "token"
+{
+  var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+  if (match) {
+    return (match[2]);
+  }
+  else{
+      return ''
+  }
+}
 
 function App() {
   var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQXllc2hhIiwiZW1haWwiOiJBc2h1QGdtYWlsLmNvbSIsImNvbnRhY3ROdW1iZXIiOiI2NzU4OTA1NjciLCJpYXQiOjE2NTAwMzU2NjZ9.Bu7BjJfKLfhHLaUe8kl77qle00Lp3bxrUqUlFZqrsnw";

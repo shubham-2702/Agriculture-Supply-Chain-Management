@@ -29,10 +29,11 @@ const changePassword = (e) => {
   console.log(formData)
 }
 
-  const submitForm = (e) => {
+ const submitForm = (e) => {
   e.preventDefault()
-  axios.post('http://localhost:5000/farmerLogin', formData)
+  axios.post('http://localhost:5000/farmerLogin', formData, {withCredentials: true})
     .then(response => {
+      console.log("farmerLogin")
       console.log(response)
       navigate('/farmerProfile')
       navigate(0)
