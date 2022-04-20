@@ -10,6 +10,7 @@ const cors = require("cors");
 
 const farmerRegisterRouter = require("./routes/farmerRegister");
 const farmerRouter = require("./routes/farmer");
+const createProductRouter = require("./routes/createProduct");
 const customerRegisterRouter = require("./routes/customerRegister");
 const customerRouter = require("./routes/customer");
 const distributorRegisterRouter = require("./routes/distributorRegister");
@@ -55,6 +56,7 @@ app.use(session({
 // Routes START
 app.use("/farmerLogin", farmerRouter);
 app.use("/farmerRegister", farmerRegisterRouter);
+app.use("/farmerCreateProduct", createProductRouter);
 app.use("/customerLogin", customerRouter);
 app.use("/customerRegister", customerRegisterRouter);
 app.use("/distributorLogin", distributorRouter);

@@ -1,8 +1,7 @@
 import React from 'react'
 import './FarmerProfile.css'
 import jwt_decode from "jwt-decode";
-import {useNavigate} from 'react-router-dom'
-
+import {useNavigate,Link} from 'react-router-dom'
 
 
 
@@ -109,7 +108,10 @@ const FarmerProfile = () => {
 
                 {/* add product */}
               <div class="row gutters-sm">
-              <button Link>Add Products</button>
+              <Link to="/farmerCreateProduct">
+              <button >Add Products</button>
+              </Link>
+             
                 <div class="col-sm-6 mb-3">
                  
                 </div>

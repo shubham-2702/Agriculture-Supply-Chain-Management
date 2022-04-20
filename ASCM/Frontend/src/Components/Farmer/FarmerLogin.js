@@ -49,7 +49,7 @@ const changePassword = (e) => {
     <form id ="farmer-register-form" action="/farmerLogin" method="POST">
       <label className="farmer-register-label">
         <p class="farmer-register-label-txt" name="name" >ENTER YOUR EMAIl</p>
-        <input type="name"  onKeyDown={e => changeEmail(e)} class="farmer-register-input" name="email"/>
+        <input type="name"  onKeyUp={e => changeEmail(e)} class="farmer-register-input" name="email"/>
         <div class="farmer-register-line-box">
           <div class="farmer-register-line"></div>
         </div>
@@ -57,7 +57,7 @@ const changePassword = (e) => {
       <br/>
       <label className="farmer-register-label">
         <p class="farmer-register-label-txt">ENTER YOUR PASSWORD</p>
-        <input type="password"  onKeyDown={e => changePassword(e)} class="farmer-register-input" name="password"/>
+        <input type="password"  onKeyUp={e => changePassword(e)} class="farmer-register-input" name="password"/>
         <div class="farmer-register-line-box">
           <div class="farmer-register-line"></div>
         </div>
