@@ -30,9 +30,12 @@ contract Farmer is Product,Distributor{
     function setFarmerDetails(string memory _name,string memory _location,string memory _phone,string memory _email) public{
         farmer storage f= farmer_map[msg.sender];
         f.farmer_add=msg.sender;
-        farmer_count++;
+        if(f.farmer_id==0)
+        {
+            farmer_count++;
+            f.farmer_id=farmer_count;
+        }
         f.farmer_email=_email;
-        f.farmer_id=farmer_count;
         f.farmer_phone=_phone;
         f.farmer_name=_name;
         f.farmer_location=_location;

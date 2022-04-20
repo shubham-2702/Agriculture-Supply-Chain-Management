@@ -1,8 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './CustomerRegister.css'
 import 'react-dom'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
+import detectEthereumProvider from "@metamask/detect-provider";
+import { loadContract } from "../../utils/loadContract";
+import Web3 from "web3";
+
+
+let web3;
+let customer;
+let provider;
 
 const CustomerRegister = () => {
     const [formData, setFormData] = useState({
@@ -13,6 +21,53 @@ const CustomerRegister = () => {
         password: ''
     })
     
+    const [account, setAccount] = useState(null);
+    const setAccountListener = (provider) => {
+    provider.on("accountsChanged", (accounts) => {
+      setAccount(accounts[0]);
+      console.log(accounts[0]);
+    });
+  };
+
+  useEffect(() => {
+    const loadProvider = async () => {
+      provider = await detectEthereumProvider();
+     
+      if (provider) {
+        setAccountListener(provider);
+        provider.request({method: "eth_requestAccounts"});
+      } else {
+        console.error("Please install MetaMask!");
+      }
+      if (typeof web3 !== 'undefined') {
+        web3 = new Web3(web3.currentProvider);
+    } else {
+        // set the provider you want from Web3.providers
+        web3 = new Web3(provider);
+    }
+    const accounts = await web3.eth.getAccounts();
+    setAccount(accounts[0]);
+     customer = await loadContract("Customer", provider);
+     console.log(customer.address);
+    };
+
+    loadProvider();
+  }, []);
+
+  const setDetails = async()=>{
+    //const provider=new Web3.providers.HttpProvider("http://127.0.0.1:7545");
+    var name=formData.name;
+    var email=formData.email;
+    var phone=formData.contactNumber;
+    var location=formData.address;
+    console.log(name);
+    console.log(email);
+    console.log(phone);
+    console.log(location);
+    console.log(customer.address);
+    console.log(account);
+    customer.setCustomerDetails(name,location,phone,email,{from:account,gasLimit:3000000});
+  }
     const navigate = useNavigate()
       
     
@@ -49,6 +104,7 @@ const CustomerRegister = () => {
     
     const submitForm = (e) => {
         e.preventDefault()
+        setDetails();
         axios.post('http://localhost:5000/customerRegister', formData)
           .then(response => {
             console.log(response)
