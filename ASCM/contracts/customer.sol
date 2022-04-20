@@ -31,12 +31,14 @@ contract Customer is Farmer{
     //     c.customer_add=msg.sender;
     // }
 
-    function setCustomerDetails(string memory _name,string memory _location,string memory _phone,uint _product_feedback,uint _delivery_feedback,
-        string memory _email) public{
+    function setCustomerDetails(string memory _name,string memory _location,string memory _phone,string memory _email) public{
         customer storage c= customer_map[msg.sender];
         c.customer_add=msg.sender;
-        cnt++;
-        c.customer_id=cnt;
+        if(c.customer_id==0)
+        {   
+            cnt++;
+            c.customer_id=cnt;
+        }
         c.phone=_phone; 
         c.customer_name=_name;
         c.location=_location;

@@ -18,10 +18,13 @@ contract Distributor is Order{
         distributor storage d = distributor_map[msg.sender];
         d.distributor_add=msg.sender;
     }
-    function setDetails(string memory _name,string memory _phone,string memory _email) public{
+    function setDetailsDistributor(string memory _name,string memory _phone,string memory _email) public{
         distributor storage d = distributor_map[msg.sender];
+        if(d.distributor_id==0)
+        {
         distributor_count++;
         d.distributor_id=distributor_count;
+        }
         d.distributor_name=_name;
         d.distributor_phone=_phone;
         d.distributor_email=_email;  
