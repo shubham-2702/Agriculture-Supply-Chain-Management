@@ -9,12 +9,16 @@ const cookie = require('cookie-parser')
 const cors = require("cors");
 
 const farmerRegisterRouter = require("./routes/farmerRegister");
-const farmerRouter = require("./routes/farmer");
+const farmerLoginRouter = require("./routes/farmer");
+const farmersRouter = require("./routes/getFarmer");
+const productsRouter = require("./routes/product");
 const createProductRouter = require("./routes/createProduct");
 const customerRegisterRouter = require("./routes/customerRegister");
-const customerRouter = require("./routes/customer");
+const customerLoginRouter = require("./routes/customer");
 const distributorRegisterRouter = require("./routes/distributorRegister");
-const distributorRouter = require("./routes/distributor");
+const distributorLoginRouter = require("./routes/distributor");
+const logOutRouter = require("./routes/logout");
+
 
 
 
@@ -54,13 +58,18 @@ app.use(session({
 }));
 
 // Routes START
-app.use("/farmerLogin", farmerRouter);
+app.use("/farmerLogin", farmerLoginRouter);
 app.use("/farmerRegister", farmerRegisterRouter);
 app.use("/farmerCreateProduct", createProductRouter);
-app.use("/customerLogin", customerRouter);
+app.use("/farmersRouter", farmersRouter);
+app.use("/products", productsRouter);
+app.use("/customerLogin", customerLoginRouter);
 app.use("/customerRegister", customerRegisterRouter);
-app.use("/distributorLogin", distributorRouter);
+app.use("/distributorLogin", distributorLoginRouter);
 app.use("/distributorRegister", distributorRegisterRouter);
+app.use("/logout", logOutRouter);
+
+
 
 app.listen(5000, function() {
     console.log("Server started on port 5000.");

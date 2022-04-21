@@ -2,6 +2,8 @@ import React from 'react'
 import './CustomerProfile.css'
 import jwt_decode from "jwt-decode";
 import {useNavigate} from 'react-router-dom'
+import axios from 'axios'
+
 
 
 
@@ -26,7 +28,20 @@ const CustomerProfile = () => {
   //   navigate('/customerRegister')
   //   navigate(0)
   // }
-  
+  const submitLogout = (e) => {
+    e.preventDefault()
+
+    axios.post('http://localhost:5000/logout')
+      .then(response => {
+        console.log(response)
+        navigate('/')
+        navigate(0)
+        // console.log(formData);
+      })
+      .catch(err => {
+          console.log(err);
+      })
+  }
   
   return (
     <div id="farmer-profile">
@@ -112,6 +127,11 @@ const CustomerProfile = () => {
               <div class="col-sm-6 mb-3">
                 
               </div>
+            </div>
+
+             
+            <div class="row gutters-sm">
+              <button  onClick={(e) => submitLogout(e)} type="submit" >Log Out</button>
             </div>
 
 
