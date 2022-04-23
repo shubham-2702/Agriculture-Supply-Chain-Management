@@ -21,7 +21,6 @@ router.post('/', (req, res, next) => {
           password
         }).save()
           .then(result => {
-
             res.status(201).json({msg: "Account created successfully"})
           })
           .catch(err => {

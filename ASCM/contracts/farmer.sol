@@ -49,9 +49,12 @@ contract Farmer is Product,Distributor{
         // function placeOrder(address _to) public
         //OK
     function createProduct(string memory _name,uint _price,string memory _category,uint _amount) public{
-            pid++;
-            product storage p=product_map[pid];
-            p.product_id=pid;
+           product storage p=product_map[pid];
+            if(p.product_id==0)
+            {
+                pid++;
+                p.product_id=pid;
+            }
             p.product_name=_name;
             p.product_amount=_amount;
             p.product_price=_price;

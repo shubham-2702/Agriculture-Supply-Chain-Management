@@ -85,7 +85,7 @@ const setDetails = async()=>{
   //   var acc=accounts[0];
   //   console.log(acc);
      console.log(account);
-     farmer.setFarmerDetails(name,location,phone,email,{from:account,gasLimit:3000000});
+     await farmer.setFarmerDetails(name,location,phone,email,{from:account,gasLimit:3000000});
 // }).then((tx)=>{
 //     console.log(tx);
 // }).catch((tx)=>{
@@ -135,10 +135,10 @@ const setDetails = async()=>{
   const submitForm = (e) => {
     e.preventDefault()
     setDetails();
-    axios.post('http://localhost:5000/farmerRegister', formData)
+    axios.post('http://localhost:5000/farmerRegister', formData, {withCredentials: true})
       .then(response => {
         console.log(response)
-        navigate('/farmerProfile')
+        navigate('/farmerLogin')
         navigate(0)
         // console.log(formData);
       })
@@ -151,7 +151,7 @@ const setDetails = async()=>{
     <form id ="farmer-register-form">
       <label className="farmer-register-label">
         <p class="farmer-register-label-txt" name="name">ENTER YOUR NAME</p>
-        <input type="text" onKeyDown={e => changeName(e)} class="farmer-register-input"/>
+        <input type="text" onKeyUp={e => changeName(e)} class="farmer-register-input"/>
         <div class="farmer-register-line-box">
           <div class="farmer-register-line"></div>
         </div>
@@ -160,7 +160,7 @@ const setDetails = async()=>{
       
       <label className="farmer-register-label">
         <p class="farmer-register-label-txt" name="email">ENTER YOUR EMAIL</p>
-        <input type="email"  onKeyDown={e => changeEmail(e)} class="farmer-register-input"/>
+        <input type="email"  onKeyUp={e => changeEmail(e)} class="farmer-register-input"/>
         <div class="farmer-register-line-box">
           <div class="farmer-register-line"></div>
         </div>
@@ -168,7 +168,7 @@ const setDetails = async()=>{
       <br/>
       <label className="farmer-register-label">
         <p class="farmer-register-label-txt" name="contactNumber">ENTER YOUR CONTACT NUMBER</p>
-        <input type="text" onKeyDown={e => changeContactNumber(e)} class="farmer-register-input"/>
+        <input type="text" onKeyUp={e => changeContactNumber(e)} class="farmer-register-input"/>
         <div class="farmer-register-line-box">
           <div class="farmer-register-line"></div>
         </div>
@@ -176,7 +176,7 @@ const setDetails = async()=>{
       <br/>
       <label className="farmer-register-label">
         <p class="farmer-register-label-txt"  name="address">ENTER YOUR ADDERESS</p>
-        <input type="text" onKeyDown={e => changeAddress(e)} class="farmer-register-input"/>
+        <input type="text" onKeyUp={e => changeAddress(e)} class="farmer-register-input"/>
         <div class="farmer-register-line-box ">
           <div class="farmer-register-line"></div>
         </div>
@@ -184,7 +184,7 @@ const setDetails = async()=>{
       <br/>
       <label className="farmer-register-label">
         <p class="farmer-register-label-txt" name="password">CREATE PASSWORD</p>
-        <input type="password" onKeyDown={e => changePassword(e)} class="farmer-register-input"/>
+        <input type="password" onKeyUp={e => changePassword(e)} class="farmer-register-input"/>
         <div class="farmer-register-line-box">
           <div class="farmer-register-line"></div>
         </div>

@@ -14,7 +14,7 @@ const FarmerSchema = new Schema({
     contactNumber:{
         type:String,
     },
-    addrress:{
+    address:{
         type:String,
     },
     password:{

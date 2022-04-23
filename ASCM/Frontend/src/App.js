@@ -4,6 +4,7 @@ import FarmerLogin from './Components/Farmer/FarmerLogin.js';
 import FarmerRegister from './Components/Farmer/FarmerRegister.js';
 import FarmerProfile from './Components/Farmer/FarmerProfile/FarmerProfile.js';
 import CreateProduct from './Components/Farmer/CreateProduct/CreateProduct.js';
+import ViewProduct from './Components/Customer/ViewProduct/ViewProduct.js';
 
 import CustomerLogin from './Components/Customer/CustomerLogin.js';
 import CustomerRegister from './Components/Customer/CustomerRegister.js';
@@ -43,7 +44,7 @@ function App() {
           <Route  path="/distributorLogin" element={<DistributorLogin/>} />
           <Route  path="/distributorRegister" element={<DistributorRegister/>} />
           <Route  path="/distributorProfile" element={<DistributorProfile/>} />
-
+          <Route path="/viewProduct" element={<ViewProduct/>} />
 
          </Routes>      
        </div>

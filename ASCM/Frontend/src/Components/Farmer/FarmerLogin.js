@@ -3,16 +3,12 @@ import './FarmerRegister.css'
 import 'react-dom';
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
-
-
 const FarmerLogin = () => {
-
   
 const [formData, setFormData] = useState({
   email: '',
   password: ''
 })
-
 const navigate = useNavigate()
 const changeEmail = (e) => {
   setFormData({
@@ -28,11 +24,11 @@ const changePassword = (e) => {
   })
   console.log(formData)
 }
-
-  const submitForm = (e) => {
+ const submitForm = (e) => {
   e.preventDefault()
-  axios.post('http://localhost:5000/farmerLogin', formData)
+  axios.post('http://localhost:5000/farmerLogin', formData, {withCredentials: true})
     .then(response => {
+      console.log("farmerLogin")
       console.log(response)
       navigate('/farmerProfile')
       navigate(0)
@@ -42,13 +38,13 @@ const changePassword = (e) => {
         console.log(err);
     })
   }
-
   return (
     <div class='farmer-register'>
     <form id ="farmer-register-form" action="/farmerLogin" method="POST">
       <label className="farmer-register-label">
         <p class="farmer-register-label-txt" name="name" >ENTER YOUR EMAIl</p>
         <input type="name"  onKeyDown={e => changeEmail(e)} class="farmer-register-input" name="email"/>
+        <input type="name"  onKeyUp={e => changeEmail(e)} class="farmer-register-input" name="email"/>
         <div class="farmer-register-line-box">
           <div class="farmer-register-line"></div>
         </div>
@@ -57,6 +53,7 @@ const changePassword = (e) => {
       <label className="farmer-register-label">
         <p class="farmer-register-label-txt">ENTER YOUR PASSWORD</p>
         <input type="password"  onKeyDown={e => changePassword(e)} class="farmer-register-input" name="password"/>
+        <input type="password"  onKeyUp={e => changePassword(e)} class="farmer-register-input" name="password"/>
         <div class="farmer-register-line-box">
           <div class="farmer-register-line"></div>
         </div>
@@ -68,5 +65,4 @@ const changePassword = (e) => {
   </div>
   )
 }
-
 export default FarmerLogin
