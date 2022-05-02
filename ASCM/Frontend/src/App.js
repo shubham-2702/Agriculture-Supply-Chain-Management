@@ -5,6 +5,8 @@ import FarmerRegister from './Components/Farmer/FarmerRegister.js';
 import FarmerProfile from './Components/Farmer/FarmerProfile/FarmerProfile.js';
 import CreateProduct from './Components/Farmer/CreateProduct/CreateProduct.js';
 import ViewProduct from './Components/Customer/ViewProduct/ViewProduct.js';
+import ViewProductss from './Components/Customer/ViewProductss/ViewProduct.js';
+import CheckoutPage from './Components/Customer/CheckoutPage.js';
 
 import CustomerLogin from './Components/Customer/CustomerLogin.js';
 import CustomerRegister from './Components/Customer/CustomerRegister.js';
@@ -12,6 +14,12 @@ import CustomerProfile from './Components/Customer/CustomerProfile/CustomerProfi
 import DistributorLogin from './Components/Distributor/DistributorLogin.js';
 import DistributorRegister from './Components/Distributor/DistributorRegister.js';
 import DistributorProfile from './Components/Distributor/DistributorProfile/DistributorProfile.js';
+
+import InitializeContract from './Components/Payments/InitializeContract';
+import CancelOrder from './Components/Payments/CancelOrder';
+import ConfirmRecipt from './Components/Payments/ConfirmRecipt';
+import ReturnItem from './Components/Payments/ReturnItem';
+
 import jwt_decode from "jwt-decode";
 import * as bst from "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
@@ -45,6 +53,14 @@ function App() {
           <Route  path="/distributorRegister" element={<DistributorRegister/>} />
           <Route  path="/distributorProfile" element={<DistributorProfile/>} />
           <Route path="/viewProduct" element={<ViewProduct/>} />
+          <Route path="/viewProducts" element={<ViewProductss/>} /> 
+          <Route path="/cart" element={<CheckoutPage/>} /> 
+
+
+          <Route path="/initializeContract" element={<InitializeContract />} />
+          <Route path="/cancelOrder" element={<CancelOrder />} />
+          <Route path="/confirmRecipt" element={<ConfirmRecipt />} />
+          <Route path="/returnItem" element={<ReturnItem />} />
 
          </Routes>      
        </div>

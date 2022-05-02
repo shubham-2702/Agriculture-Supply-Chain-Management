@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const passportLocalMongoose = require("passport-local-mongoose");
-
+const Product = require('./product')
 
 const FarmerSchema = new Schema({
 
@@ -21,7 +21,7 @@ const FarmerSchema = new Schema({
         type:String,
     },
     products:{
-        type:Array,
+        type:[{ type: Schema.Types.ObjectId, ref: 'Product' }],
     }
 })
 // FarmerSchema.plugin(passportLocalMongoose,{ usernameField : 'email' });

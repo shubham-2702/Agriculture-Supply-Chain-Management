@@ -1,9 +1,9 @@
 import React from 'react'
 import './CustomerProfile.css'
 import jwt_decode from "jwt-decode";
-import {useNavigate} from 'react-router-dom'
+import {useNavigate,Link} from 'react-router-dom'
 import axios from 'axios'
-
+import img2 from '../../../assets/img/gallery/logo-icon.png'
 
 
 
@@ -32,8 +32,8 @@ const CustomerProfile = () => {
     axios.post('http://localhost:5000/logout')
       .then(response => {
         console.log(response)
-        navigate('/')
-        navigate(0)
+        // navigate('/')
+        // navigate(0)
         // console.log(formData);
       })
       .catch(err => {
@@ -44,6 +44,23 @@ const CustomerProfile = () => {
   return (
     <div id="farmer-profile">
     <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 bg-light opacity-85" data-navbar-on-scroll="data-navbar-on-scroll">
+                <div class="container"><a class="navbar-brand" href="index.html"><img class="d-inline-block align-top img-fluid" src={img2} alt="" width="50" /><span class="text-theme font-monospace fs-4 ps-2">AgriChain</span></a>
+                    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item px-2"><a class="nav-link fw-medium active" aria-current="page" href="/">Home</a></li>
+                            <li class="nav-item px-2"><a class="nav-link fw-medium" href="#Opportuanities">Farmer</a></li>
+                            <li class="nav-item px-2"><a class="nav-link fw-medium" href="#testimonial">Customer</a></li>
+                            <li class="nav-item px-2"><a class="nav-link fw-medium" href="#invest">Distributor</a></li>
+                            <li class="nav-item px-2"><a class="nav-link fw-medium" href="#contact">Contact </a></li>
+                        </ul>
+                        {/* <form class="d-flex">
+                            <button class="btn btn-lg btn-dark bg-gradient order-0" type="submit">Logout</button>
+                        </form> */}
+                    </div>
+                </div>
+            </nav>
   <div class="farmer-profile-main-body">
   
         <div class="row gutters-sm">
@@ -117,8 +134,9 @@ const CustomerProfile = () => {
               </div>
             </div>
             <div class="row gutters-sm">
-            <button>View Items</button>
-              <div class="col-sm-6 mb-3">
+            <Link to="/viewProduct">  
+                                    <button type="button" class="btn btn-warning btn-block btn-lg" style={{ display: `block`, width: `20%` }}>View Items</button>
+                                    </Link>              <div class="col-sm-6 mb-3">
                
               </div>
               <div class="col-sm-6 mb-3">

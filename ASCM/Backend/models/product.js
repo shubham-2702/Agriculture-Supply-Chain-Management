@@ -10,9 +10,12 @@ const ProductSchema = new Schema({
         type:String,
     },
     price:{
-        type:String,
+        type:Number,
     },
     quantity:{
+        type:Number,
+    },
+    image:{
         type:String,
     },
     owner:{
