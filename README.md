@@ -1,6 +1,6 @@
 # Agriculture-Supply-Chain-Management :link:	
 
-#### This repository contains code for an Agricultural Suppy Chain Management DApp using *Solidity* and *Truffle*. The *Smart Contracts* are deployed on remote nodes using *Truffle* and interactions are made using *Ethereum* and *web3.js* library. 
+#### This repository contains code for an Agricultural Suppy Chain Management DApp using _*Solidity*_ and _*Truffle*_. The _*Smart Contracts*_ are deployed on remote nodes using _*Truffle*_ and interactions are made using _*Ethereum*_ and _*web3.js*_ library. 
 
 ## Traditional farming-transport challenges :shopping: :package:	
  * Outdated traditional delivery practices
