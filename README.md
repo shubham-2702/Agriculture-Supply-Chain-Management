@@ -26,6 +26,5 @@
 ## Setting up the workspace
 
 ## Workflow 
-![Agrichain Sequence diagram](https://user-images.githubusercontent.com/71509852/168951369-a537def8-ea4c-479a-a003-f1d9be0b9d58.png)
-
+![MinorProject](https://user-images.githubusercontent.com/71509852/168952807-41def38b-d1fe-4b67-82d7-658f96721063.png)
 
