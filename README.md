@@ -34,8 +34,11 @@ npm start
 
 #### ganache local testing
 Open ganache 
+br
 Create new workspace and name it
-Add location of ** truffle-config.js ** file from project
+br
+Add location of *truffle-config.js* file from project
+br
 Save workspace
 
 ## All set. Woohooo! :rocket:
